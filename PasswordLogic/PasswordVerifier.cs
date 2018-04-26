@@ -10,9 +10,24 @@ namespace PasswordLogic
     {
        public static bool Verify(string password)
         {
-            if (password.Length < 8)
+            if (!String.IsNullOrEmpty(password))
+            {
+                if (password.Length < 8)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+                    
+            }
+            else
+            {
                 return false;
-            return true;
+            }
+            
+            
         }
     }
 }

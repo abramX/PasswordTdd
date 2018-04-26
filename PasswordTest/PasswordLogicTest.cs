@@ -12,9 +12,12 @@ namespace PasswordTest
     public class PasswordLogicTest
     {
         [TestCase("")]
-        public void TestClassVerify(string password)
+        [TestCase(null)]
+        [TestCase("passordnonvalida")]
+        public void TestVerifyIsFalse(string password)
         {           
             Assert.IsFalse(PasswordVerifier.Verify(password));
         }
+
     }
 }
