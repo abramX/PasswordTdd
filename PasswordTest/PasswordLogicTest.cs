@@ -13,7 +13,7 @@ namespace PasswordTest
     {
         [TestCase("")]
         [TestCase(null)]
-        [TestCase("passordnonvalida")]
+        [TestCase("mancaunamaiuscola")]
         public void TestVerifyIsFalse(string password)
         {           
             Assert.IsFalse(PasswordVerifier.Verify(password));
