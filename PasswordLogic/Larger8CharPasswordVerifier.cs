@@ -10,9 +10,10 @@
             }
             else if(successor!=null)
             {
-                successor.Verify(password);
+                return successor.Verify(password);
             }
-            return true;
+           
+            return false;
         }
     }
 }

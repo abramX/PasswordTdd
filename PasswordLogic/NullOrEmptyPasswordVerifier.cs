@@ -11,7 +11,7 @@ namespace PasswordLogic
                 return false;
             }else if (successor != null)
             {
-                successor.Verify(password);
+                return successor.Verify(password);
             }
             return true;
         }
