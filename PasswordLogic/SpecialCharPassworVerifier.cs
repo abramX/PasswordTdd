@@ -2,11 +2,11 @@
 
 namespace PasswordLogic
 {
-    public class UpperCaseCharPasswordVerifier : PasswordVerifierHandler
+    public class SpecialCharPassworVerifier : PasswordVerifierHandler
     {
         public override bool Verify(string password)
         {
-            if (!Regex.IsMatch(password, @"[A-Z]"))
+            if (!Regex.IsMatch(password, @"[^a-zA-Z\d]"))
             {
                 return false;
             }

@@ -11,6 +11,7 @@ namespace PasswordTest
         PasswordVerifierHandler _upperCase;
         PasswordVerifierHandler _lowerCase;
         PasswordVerifierHandler _number;
+        PasswordVerifierHandler _specialChar;
 
         [SetUp]
         public void OnStart()
@@ -20,18 +21,20 @@ namespace PasswordTest
             _upperCase = new UpperCaseCharPasswordVerifier();
             _lowerCase = new LowerCasePasswordVerifier();
             _number = new NumberPassworVerifier();
+            _specialChar = new SpecialCharPassworVerifier();
+
             _nullOrEmpty.SetSuccessor(_large8Char);
             _large8Char.SetSuccessor(_upperCase);
             _upperCase.SetSuccessor(_lowerCase);
             _lowerCase.SetSuccessor(_number);
-
+            _number.SetSuccessor(_specialChar);
         }
         [TestCase("")]
         [TestCase(null)]
         [TestCase("mancaunamaiuscola")]
         [TestCase("MANCAUNAMAIUSCOLA")]
         [TestCase("mancaUNnumero")]
-        //[TestCase("mancaunCarattereSpeciale1")]
+        [TestCase("mancaunCarattereSpeciale1")]
         public void TestVerifyIsFalse(string password)
         {           
             Assert.IsFalse(_nullOrEmpty.Verify(password));
