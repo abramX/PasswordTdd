@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PasswordLogic;
 
 namespace PasswordTest
@@ -11,15 +6,25 @@ namespace PasswordTest
     [TestFixture]
     public class PasswordLogicTest
     {
+        PasswordVerifierHandler _nullOrEmpty;
+        PasswordVerifierHandler _large8Char;
+
+        [SetUp]
+        public void OnStart()
+        {
+            _nullOrEmpty = new NullOrEmptyPasswordVerifier();
+            _large8Char = new Larger8CharPasswordVerifier();
+            _nullOrEmpty.SetSuccessor(_large8Char);
+        }
         [TestCase("")]
         [TestCase(null)]
-        [TestCase("mancaunamaiuscola")]
-        [TestCase("MANCAUNAMAIUSCOLA")]
-        [TestCase("mancaUNnumero")]
-        [TestCase("mancaunCarattereSpeciale1")]
+        //[TestCase("mancaunamaiuscola")]
+        //[TestCase("MANCAUNAMAIUSCOLA")]
+        //[TestCase("mancaUNnumero")]
+        //[TestCase("mancaunCarattereSpeciale1")]
         public void TestVerifyIsFalse(string password)
         {           
-            Assert.IsFalse(PasswordVerifier.Verify(password));
+            Assert.IsFalse(_nullOrEmpty.Verify(password));
         }
 
     }
