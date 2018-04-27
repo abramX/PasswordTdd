@@ -15,6 +15,8 @@ namespace PasswordTest
         [TestCase(null)]
         [TestCase("mancaunamaiuscola")]
         [TestCase("MANCAUNAMAIUSCOLA")]
+        [TestCase("mancaUNnumero")]
+        [TestCase("mancaunCarattereSpeciale1")]
         public void TestVerifyIsFalse(string password)
         {           
             Assert.IsFalse(PasswordVerifier.Verify(password));

@@ -15,7 +15,7 @@ namespace PasswordLogic
             {
                 //bool prova = Regex.IsMatch(password, @"[A-Z]");
                 //string provastringa= Regex.Match(password, @"[A-Z]").ToString();
-                if ((password.Length < 8) | (!Regex.IsMatch(password, @"[A-Z]")) | (!Regex.IsMatch(password, @"[a-z]")))
+                if ((password.Length < 8) | (!Regex.IsMatch(password, @"[A-Z]")) | (!Regex.IsMatch(password, @"[a-z]")) | (!Regex.IsMatch(password, @"\d")) | (!Regex.IsMatch(password, @"[^a-zA-Z\d]")))
                 {
                     return false;
                 }
