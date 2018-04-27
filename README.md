@@ -1,4 +1,4 @@
-<h1>PasswordTdd</h1>
+<h1>Password Tdd and Chain Of Responsability Pattern </h1>
 <p>Create a Password verifications class called PasswordVerifier.
 Add the following verifications to a master function called Verify()</p>
 <ul>
