@@ -9,11 +9,8 @@ namespace PasswordLogic
             if (String.IsNullOrEmpty(password))
             {
                 return false;
-            }else if (successor != null)
-            {
-                return successor.Verify(password);
             }
-            return true;
+            return successor.Verify(password);
         }
     }
 }

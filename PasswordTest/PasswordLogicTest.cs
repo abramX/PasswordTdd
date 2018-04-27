@@ -12,6 +12,7 @@ namespace PasswordTest
         PasswordVerifierHandler _lowerCase;
         PasswordVerifierHandler _number;
         PasswordVerifierHandler _specialChar;
+        PasswordVerifierHandler _noOpSuccessor;
 
         [SetUp]
         public void OnStart()
@@ -22,12 +23,14 @@ namespace PasswordTest
             _lowerCase = new LowerCasePasswordVerifier();
             _number = new NumberPassworVerifier();
             _specialChar = new SpecialCharPassworVerifier();
+            _noOpSuccessor = new NoOpSuccessorPasswordVerifier();
 
             _nullOrEmpty.SetSuccessor(_large8Char);
             _large8Char.SetSuccessor(_upperCase);
             _upperCase.SetSuccessor(_lowerCase);
             _lowerCase.SetSuccessor(_number);
             _number.SetSuccessor(_specialChar);
+            _specialChar.SetSuccessor(_noOpSuccessor);
         }
         [TestCase("")]
         [TestCase(null)]
